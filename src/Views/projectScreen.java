@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI;
+package Views;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -51,7 +51,6 @@ public class projectScreen extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Formulación y Evaluación de Proyectos");
-        setPreferredSize(new java.awt.Dimension(800, 600));
 
         jButton1.setText("Agregar concepto");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
