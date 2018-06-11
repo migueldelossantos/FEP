@@ -9,26 +9,26 @@ package Models;
  *
  * @author miguel
  */
-public class Categoria_memoria {
-    private Integer id_categoria;
+public class TipoActivo {
+    private Integer id_activo;
     private String nombre;
 
-    public Categoria_memoria() {
-        this.id_categoria = null;
+    public TipoActivo() {
+        this.id_activo = null;
         this.nombre = null;
     }
     
-    public Categoria_memoria(Integer id_categoria, String nombre) {
-        this.id_categoria = id_categoria;
+    public TipoActivo(Integer id_activo, String nombre) {
+        this.id_activo = id_activo;
         this.nombre = nombre;
     }
 
-    public Integer getId_categoria() {
-        return id_categoria;
+    public Integer getId_activo() {
+        return id_activo;
     }
 
-    public void setId_categoria(Integer id_categoria) {
-        this.id_categoria = id_categoria;
+    public void setId_activo(Integer id_activo) {
+        this.id_activo = id_activo;
     }
 
     public String getNombre() {
@@ -41,7 +41,6 @@ public class Categoria_memoria {
 
     @Override
     public String toString() {
-        return "Categoria_memoria{" + "id_categoria=" + id_categoria + ", nombre=" + nombre + '}';
+        return "Tipo_activo{" + "id_activo=" + id_activo + ", nombre=" + nombre + '}';
     }
-    
 }

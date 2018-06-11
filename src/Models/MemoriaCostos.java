@@ -9,7 +9,7 @@ package Models;
  *
  * @author miguel
  */
-public class Memoria_costos {
+public class MemoriaCostos {
     private Integer id_concepto;
     private Integer categoria_id;
     private String nombre;
@@ -19,7 +19,7 @@ public class Memoria_costos {
     private Double total;
     private Integer proyecto_id;
 
-    public Memoria_costos() {
+    public MemoriaCostos() {
         this.id_concepto = null;
         this.categoria_id = null;
         this.nombre = null;
@@ -30,7 +30,7 @@ public class Memoria_costos {
         this.proyecto_id = null;
     }
     
-    public Memoria_costos(Integer id_concepto, Integer categoria_id, String nombre, String u_m, Double volumen, Double costo_unitario, Double total, Integer proyecto_id) {
+    public MemoriaCostos(Integer id_concepto, Integer categoria_id, String nombre, String u_m, Double volumen, Double costo_unitario, Double total, Integer proyecto_id) {
         this.id_concepto = id_concepto;
         this.categoria_id = categoria_id;
         this.nombre = nombre;

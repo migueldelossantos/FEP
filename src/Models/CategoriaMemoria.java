@@ -9,16 +9,16 @@ package Models;
  *
  * @author miguel
  */
-public class Categoria_prod {
+public class CategoriaMemoria {
     private Integer id_categoria;
     private String nombre;
 
-    public Categoria_prod() {
+    public CategoriaMemoria() {
         this.id_categoria = null;
         this.nombre = null;
     }
     
-    public Categoria_prod(Integer id_categoria, String nombre) {
+    public CategoriaMemoria(Integer id_categoria, String nombre) {
         this.id_categoria = id_categoria;
         this.nombre = nombre;
     }
@@ -41,6 +41,7 @@ public class Categoria_prod {
 
     @Override
     public String toString() {
-        return "Categoria_prod{" + "id_categoria=" + id_categoria + ", nombre=" + nombre + '}';
+        return "Categoria_memoria{" + "id_categoria=" + id_categoria + ", nombre=" + nombre + '}';
     }
+    
 }

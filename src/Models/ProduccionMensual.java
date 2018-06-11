@@ -9,20 +9,20 @@ package Models;
  *
  * @author miguel
  */
-public class Produccion_mensual {
+public class ProduccionMensual {
     private Integer id_concepto;
     private Integer categoria_id;
     private String nombre;
     private Integer proyecto_id;
 
-    public Produccion_mensual() {
+    public ProduccionMensual() {
         this.id_concepto = null;
         this.categoria_id = null;
         this.nombre = null;
         this.proyecto_id = null;
     }
     
-    public Produccion_mensual(Integer id_concepto, Integer categoria_id, String nombre, Integer proyecto_id) {
+    public ProduccionMensual(Integer id_concepto, Integer categoria_id, String nombre, Integer proyecto_id) {
         this.id_concepto = id_concepto;
         this.categoria_id = categoria_id;
         this.nombre = nombre;

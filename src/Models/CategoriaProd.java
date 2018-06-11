@@ -9,26 +9,26 @@ package Models;
  *
  * @author miguel
  */
-public class Tipo_activo {
-    private Integer id_activo;
+public class CategoriaProd {
+    private Integer id_categoria;
     private String nombre;
 
-    public Tipo_activo() {
-        this.id_activo = null;
+    public CategoriaProd() {
+        this.id_categoria = null;
         this.nombre = null;
     }
     
-    public Tipo_activo(Integer id_activo, String nombre) {
-        this.id_activo = id_activo;
+    public CategoriaProd(Integer id_categoria, String nombre) {
+        this.id_categoria = id_categoria;
         this.nombre = nombre;
     }
 
-    public Integer getId_activo() {
-        return id_activo;
+    public Integer getId_categoria() {
+        return id_categoria;
     }
 
-    public void setId_activo(Integer id_activo) {
-        this.id_activo = id_activo;
+    public void setId_categoria(Integer id_categoria) {
+        this.id_categoria = id_categoria;
     }
 
     public String getNombre() {
@@ -41,6 +41,6 @@ public class Tipo_activo {
 
     @Override
     public String toString() {
-        return "Tipo_activo{" + "id_activo=" + id_activo + ", nombre=" + nombre + '}';
+        return "Categoria_prod{" + "id_categoria=" + id_categoria + ", nombre=" + nombre + '}';
     }
 }

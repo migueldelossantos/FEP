@@ -9,7 +9,7 @@ package Models;
  *
  * @author miguel
  */
-public class Presup_inversion {
+public class PresupInversion {
     private Integer id_concepto;
     private Integer activo_id;
     private String nombre;
@@ -21,7 +21,7 @@ public class Presup_inversion {
     private Double socios;
     private Integer proyecto_id;
 
-    public Presup_inversion() {
+    public PresupInversion() {
         this.id_concepto = null;
         this.activo_id = null;
         this.nombre = null;
@@ -34,7 +34,7 @@ public class Presup_inversion {
         this.proyecto_id = null;
     }
     
-    public Presup_inversion(Integer id_concepto, Integer activo_id, String nombre, String unidad, Double cantidad, Double costo_unitario, Double montos, Double programas, Double socios, Integer proyecto_id) {
+    public PresupInversion(Integer id_concepto, Integer activo_id, String nombre, String unidad, Double cantidad, Double costo_unitario, Double montos, Double programas, Double socios, Integer proyecto_id) {
         this.id_concepto = id_concepto;
         this.activo_id = activo_id;
         this.nombre = nombre;

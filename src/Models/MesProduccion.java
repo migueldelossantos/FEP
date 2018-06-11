@@ -9,20 +9,20 @@ package Models;
  *
  * @author miguel
  */
-public class Mes_produccion {
+public class MesProduccion {
     private Integer id_mes;
     private Integer proyecto_id;
     private Integer concepto_id;
     private Double monto;
 
-    public Mes_produccion() {
+    public MesProduccion() {
         this.id_mes = null;
         this.proyecto_id = null;
         this.concepto_id = null;
         this.monto = null;
     }
     
-    public Mes_produccion(Integer id_mes, Integer proyecto_id, Integer concepto_id, Double monto) {
+    public MesProduccion(Integer id_mes, Integer proyecto_id, Integer concepto_id, Double monto) {
         this.id_mes = id_mes;
         this.proyecto_id = proyecto_id;
         this.concepto_id = concepto_id;
