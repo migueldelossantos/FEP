@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `fep` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `fep`;
 -- MySQL dump 10.13  Distrib 5.7.22, for Linux (x86_64)
 --
 -- Host: 127.0.0.1    Database: fep
@@ -23,7 +25,7 @@ DROP TABLE IF EXISTS `categoria_memoria`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `categoria_memoria` (
-  `id_categoria` int(11) NOT NULL,
+  `id_categoria` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_categoria`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -46,7 +48,7 @@ DROP TABLE IF EXISTS `categoria_prod`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `categoria_prod` (
-  `id_categoria` int(11) NOT NULL,
+  `id_categoria` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_categoria`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -69,7 +71,7 @@ DROP TABLE IF EXISTS `memoria_costos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `memoria_costos` (
-  `id_memoria` int(11) NOT NULL,
+  `id_memoria` int(11) NOT NULL AUTO_INCREMENT,
   `categoria_id` int(11) NOT NULL,
   `nombre` varchar(45) DEFAULT NULL,
   `u_m` varchar(45) DEFAULT NULL,
@@ -77,11 +79,7 @@ CREATE TABLE `memoria_costos` (
   `costo_unitario` double DEFAULT NULL,
   `total` double DEFAULT NULL,
   `proyecto_id` int(11) NOT NULL,
-  PRIMARY KEY (`id_memoria`),
-  KEY `fk_memoria_costos_1_idx` (`proyecto_id`),
-  KEY `fk_memoria_costos_2_idx` (`categoria_id`),
-  CONSTRAINT `fk_memoria_costos_1` FOREIGN KEY (`proyecto_id`) REFERENCES `proyectos` (`id_proyectos`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_memoria_costos_2` FOREIGN KEY (`categoria_id`) REFERENCES `categoria_memoria` (`id_categoria`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  PRIMARY KEY (`id_memoria`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -102,15 +100,11 @@ DROP TABLE IF EXISTS `mes_produccion`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `mes_produccion` (
-  `id_mes` int(11) NOT NULL,
+  `id_mes` int(11) NOT NULL AUTO_INCREMENT,
   `concepto_id` int(11) NOT NULL,
   `proyecto_id` int(11) NOT NULL,
   `monto` double DEFAULT NULL,
-  PRIMARY KEY (`id_mes`),
-  KEY `fk_mes_produccion_1_idx` (`concepto_id`),
-  KEY `fk_mes_produccion_2_idx` (`proyecto_id`),
-  CONSTRAINT `fk_mes_produccion_1` FOREIGN KEY (`concepto_id`) REFERENCES `produccion_mensual` (`id_concepto`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_mes_produccion_2` FOREIGN KEY (`proyecto_id`) REFERENCES `proyectos` (`id_proyectos`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  PRIMARY KEY (`id_mes`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -131,7 +125,7 @@ DROP TABLE IF EXISTS `presup_inversion`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `presup_inversion` (
-  `id_concepto` int(11) NOT NULL,
+  `id_concepto` int(11) NOT NULL AUTO_INCREMENT,
   `activo_id` int(11) DEFAULT NULL,
   `nombre` varchar(45) DEFAULT NULL,
   `unidad` varchar(45) DEFAULT NULL,
@@ -141,11 +135,7 @@ CREATE TABLE `presup_inversion` (
   `programas` double DEFAULT NULL,
   `socios` double DEFAULT NULL,
   `proyecto_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_concepto`),
-  KEY `activo_id_idx` (`proyecto_id`),
-  KEY `activo_id_idx1` (`activo_id`),
-  CONSTRAINT `activo_id` FOREIGN KEY (`activo_id`) REFERENCES `tipo_activo` (`id_activo`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `proyecto_id` FOREIGN KEY (`proyecto_id`) REFERENCES `proyectos` (`id_proyectos`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  PRIMARY KEY (`id_concepto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -166,17 +156,13 @@ DROP TABLE IF EXISTS `produccion_mensual`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `produccion_mensual` (
-  `id_concepto` int(11) NOT NULL,
+  `id_concepto` int(11) NOT NULL AUTO_INCREMENT,
   `categoria_id` int(11) NOT NULL,
   `nombre` varchar(45) DEFAULT NULL,
   `proyecto_id` int(11) NOT NULL,
   PRIMARY KEY (`id_concepto`),
-  KEY `proyecto_id_idx` (`proyecto_id`),
   KEY `proyecto_id` (`proyecto_id`),
-  KEY `fk_proyecto_id_idx` (`proyecto_id`),
-  KEY `categoria_id_idx` (`categoria_id`),
-  CONSTRAINT `categoria_id` FOREIGN KEY (`categoria_id`) REFERENCES `categoria_prod` (`id_categoria`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_proyecto_id` FOREIGN KEY (`proyecto_id`) REFERENCES `proyectos` (`id_proyectos`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `fk_proyecto_id_idx` (`proyecto_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -197,13 +183,12 @@ DROP TABLE IF EXISTS `proyectos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `proyectos` (
-  `id_proyectos` int(11) NOT NULL,
+  `id_proyectos` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) DEFAULT NULL,
   `estado` varchar(45) DEFAULT NULL,
   `usuario_id` int(11) NOT NULL,
   PRIMARY KEY (`id_proyectos`),
-  KEY `usuario_id_idx` (`usuario_id`),
-  CONSTRAINT `usuario_id` FOREIGN KEY (`usuario_id`) REFERENCES `users` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `usuario_id_idx` (`usuario_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -224,7 +209,7 @@ DROP TABLE IF EXISTS `tipo_activo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tipo_activo` (
-  `id_activo` int(11) NOT NULL,
+  `id_activo` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_activo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -247,7 +232,7 @@ DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users` (
-  `id_user` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   `password` varchar(100) NOT NULL,
   PRIMARY KEY (`id_user`)
@@ -272,4 +257,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-10 18:23:34
+-- Dump completed on 2018-06-10 21:35:58
