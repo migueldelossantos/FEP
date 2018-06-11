@@ -16,7 +16,7 @@ import Models.Usuarios;
  *
  * @author miguel
  */
-public class UsuarioServicios {
+public class CtrlUsuarios {
     //Nombre de la tabla a la que hace referencia en la base de datos
     private final String tabla = "usuarios";
     

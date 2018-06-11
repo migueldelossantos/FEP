@@ -17,7 +17,7 @@ public class Prueba {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         //Prueba para obtener usuario
         //Instancia de la clase UsuarioServicio para consulta
-        UsuarioServicios us = new UsuarioServicios();      
+        CtrlUsuarios us = new CtrlUsuarios();      
         //instancia de un objeto Usuario, para almacenar el usuario obtenido
         Usuarios user = null;
         //Para probar el código solo deben mandar a llamar al método correspondiente creado para la funcionalidad
