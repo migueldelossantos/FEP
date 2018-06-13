@@ -10,6 +10,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -47,6 +49,13 @@ public class CtrlProduccionMensual {
         }
     }
     
+    /**
+     * Metodo para obtener un concepto por su id
+     * @param conexion
+     * @param id_concepto
+     * @return
+     * @throws SQLException 
+     */
     public ProduccionMensual obtenerPorId(Connection conexion, Integer id_concepto) throws SQLException{
         ProduccionMensual pm = null;
         try{
@@ -61,5 +70,24 @@ public class CtrlProduccionMensual {
         }
         return pm;
     }
-    
+ 
+    /**
+     * Metodo para obtener todos los conceptos de produccion mensual
+     * @param conexion
+     * @return
+     * @throws SQLException 
+     */
+    public List<ProduccionMensual> obtenerTodos(Connection conexion) throws SQLException{
+        List<ProduccionMensual> pms = new ArrayList<>();
+        try{
+            PreparedStatement consulta = conexion.prepareStatement("SELECT * FROM " + this.tabla);
+            ResultSet resultado = consulta.executeQuery();
+            while(resultado.next()){
+                pms.add(new ProduccionMensual(resultado.getInt("id_concepto"), resultado.getInt("categoria_id"), resultado.getString("nombre"), resultado.getInt("proyecto_id")));
+            }
+        }catch(SQLException ex){
+            throw new SQLException(ex);
+        }                
+        return pms;
+    }
 }
