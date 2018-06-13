@@ -30,7 +30,7 @@ public class CtrlUsuarios {
             //Para verificar si es actualización o cración, si el id del usuario es nulo, entonces se creara uno nuevo
             if(u.getId_usuario() == null){
                 //consulta almacena la consulta como objeto, y prepareStatement es la instrucción en sql
-                consulta = conexion.prepareStatement("INSERT INTO"+this.tabla+"(nombre,password) VALUES(?,?)");
+                consulta = conexion.prepareStatement("INSERT INTO "+this.tabla+"(nombre,password) VALUES(?,?)");
                 //Las lineas enseguida, colocan un valor en los signos de interrogacion de cierre introducidos en la linea anterios
                 consulta.setString(1,u.getNombre());
                 //la intruccion depende del tipo de dato, setString para cadena, setInt para entero, etc.
