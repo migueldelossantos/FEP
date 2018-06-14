@@ -21,7 +21,7 @@ public class Conexion {
                 //En esta linea se establece la nocexión
                 //El segundo argumento entre comillas es el nombre del usuario de su base de datos
                 //El tercer argumento es el password para la conexión con la base de datos.
-                cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/fep","miguel","miguel");
+                cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/fep","root","");
             }catch(SQLException ex){
                 throw new SQLException(ex);
             }catch(ClassNotFoundException ex){
