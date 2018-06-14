@@ -33,7 +33,7 @@ public class CtrlUsuariosTest {
 
     /**
      * Test of guardar method, of class CtrlUsuarios.
-     */
+     *
     @Test
     public void testGuardar() throws Exception {
         System.out.println("guardar");
@@ -44,51 +44,60 @@ public class CtrlUsuariosTest {
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
         assertTrue(u.getNombre().equals(instance.obtenerPorId(conexion,2).getNombre()));
-    }
+    }*/
 
     /**
      * Test of obtenerPorId method, of class CtrlUsuarios.
-     */
+     *
     @Test
     public void testObtenerPorId() throws Exception {
         System.out.println("obtenerPorId");
-        Connection conexion = null;
-        Integer id_usuario = null;
+        Connection conexion = Conexion.conectar();
+        Integer id_usuario = 1;
         CtrlUsuarios instance = new CtrlUsuarios();
-        Usuarios expResult = null;
+        Usuarios expResult = new Usuarios(1,"miguel","miguel");
         Usuarios result = instance.obtenerPorId(conexion, id_usuario);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+        assertEquals(expResult.getId_usuario(), result.getId_usuario());
+    }*/
+    
+    /**
+     * Test of obtenerPorNombre method, of class CtrlUsuarios.
+     */
+    @Test
+    public void testObtenerPorNombre() throws Exception {
+        System.out.println("obtenerPorNombre");
+        Connection conexion = Conexion.conectar();
+        String nombre = "miguel";
+        CtrlUsuarios instance = new CtrlUsuarios();
+        Usuarios expResult = new Usuarios(1,"miguel","miguel");
+        Usuarios result = instance.obtenerPorNombre(conexion,nombre);
+        assertEquals(expResult.getId_usuario(), result.getId_usuario());
+    }    
 
     /**
      * Test of eliminar method, of class CtrlUsuarios.
-     */
+     *
     @Test
     public void testEliminar() throws Exception {
         System.out.println("eliminar");
-        Connection conexion = null;
-        Integer id_usuario = null;
+        Connection conexion = Conexion.conectar();
+        Integer id_usuario = 3;
         CtrlUsuarios instance = new CtrlUsuarios();
         instance.eliminar(conexion, id_usuario);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+        assertTrue(instance.obtenerPorId(conexion, id_usuario)==null);
+    }*/
 
     /**
      * Test of obtenerTodos method, of class CtrlUsuarios.
-     */
+     *
     @Test
     public void testObtenerTodos() throws Exception {
         System.out.println("obtenerTodos");
-        Connection conexion = null;
+        Connection conexion = Conexion.conectar();
         CtrlUsuarios instance = new CtrlUsuarios();
-        List<Usuarios> expResult = null;
         List<Usuarios> result = instance.obtenerTodos(conexion);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+        assertTrue(result.size()>1);
+    }*/
     
 }

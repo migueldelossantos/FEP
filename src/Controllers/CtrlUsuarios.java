@@ -56,7 +56,22 @@ public class CtrlUsuarios {
             consulta.setInt(1,id_usuario);
             ResultSet resultado = consulta.executeQuery();
             while(resultado.next()){
-                usuario = new Usuarios(id_usuario,resultado.getString("nombre"),resultado.getString("password"));
+                usuario = new Usuarios(resultado.getInt("id_usuario"),resultado.getString("nombre"),resultado.getString("password"));
+            }
+        }catch(SQLException ex){
+            throw new SQLException(ex);
+        }
+        return usuario;
+    }
+    
+    public Usuarios obtenerPorNombre(Connection conexion, String nombre) throws SQLException{
+        Usuarios usuario = null;
+        try{
+            PreparedStatement consulta = conexion.prepareStatement("SELECT * FROM "+this.tabla+" WHERE nombre=?");
+            consulta.setString(1,nombre);
+            ResultSet resultado = consulta.executeQuery();
+            while(resultado.next()){
+                usuario = new Usuarios(resultado.getInt("id_usuario"),resultado.getString("nombre"),resultado.getString("password"));
             }
         }catch(SQLException ex){
             throw new SQLException(ex);
@@ -66,9 +81,9 @@ public class CtrlUsuarios {
     
     public void eliminar(Connection conexion, Integer id_usuario) throws SQLException{
         try{
-            PreparedStatement consulta = conexion.prepareCall("DELETE FROM "+this.tabla+"WHERE id_usuario=?");
+            PreparedStatement consulta = conexion.prepareStatement("DELETE FROM "+this.tabla+" WHERE id_usuario=?");
             consulta.setInt(1,id_usuario);
-            consulta.executeQuery();
+            consulta.execute();
         }catch(SQLException ex){
             throw new SQLException(ex);
         }
@@ -77,10 +92,10 @@ public class CtrlUsuarios {
     public List<Usuarios> obtenerTodos(Connection conexion) throws SQLException{
         List<Usuarios> usuarios = new ArrayList<>();
         try{
-            PreparedStatement consulta = conexion.prepareStatement("SELECT * FROM "+this.tabla);
+            PreparedStatement consulta = conexion.prepareStatement("SELECT * FROM "+this.tabla+" ");
             ResultSet resultado = consulta.executeQuery();
             while(resultado.next()){
-                usuarios.add(new Usuarios(resultado.getInt("id_usuario"),resultado.getString("nombre"),resultado.getString("passwordd")));
+                usuarios.add(new Usuarios(resultado.getInt("id_usuario"),resultado.getString("nombre"),resultado.getString("password")));
             }
         }catch(SQLException ex){
             throw new SQLException(ex);
