@@ -42,6 +42,22 @@ public class CtrlProyectos {
         }
     }
     
+    public Proyectos obtenerPorId(Connection conexion, Integer id_proyecto) throws SQLException{
+        Proyectos p = null;
+        try{
+            PreparedStatement consulta;
+            consulta = conexion.prepareStatement("SELECT * FROM "+this.tabla+" WHERE id_proyectos=?");
+            consulta.setInt(1, id_proyecto);
+            ResultSet result = consulta.executeQuery();
+            while(result.next()){
+                p = new Proyectos(result.getInt("id_proyectos"),result.getString("nombre"),result.getString("estado"),result.getInt("usuario_id"));
+            }
+        }catch(SQLException ex){
+            throw new SQLException(ex);
+        }
+        return p;
+    }
+    
     public List obtenerTodos(Connection conexion) throws SQLException{
         List<Proyectos> proyectos  = new ArrayList<>();
         try{

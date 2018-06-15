@@ -5,11 +5,10 @@
  */
 package Controllers;
 
-import Models.CategoriaMemoria;
 import Models.CategoriaProd;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.SQLClientInfoException;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -19,7 +18,7 @@ import java.sql.SQLException;
 public class CtrlCategoriaProd {
     private final String tabla = "categoria_prod";
     
-    public void guardar(Connection conexion,CategoriaMemoria cp) throws SQLException{
+    public void guardar(Connection conexion,CategoriaProd cp) throws SQLException{
         try{
             PreparedStatement consulta;
             if(cp.getId_categoria()==null){
@@ -36,14 +35,19 @@ public class CtrlCategoriaProd {
         }
     }
     
-    public void obtenerPorId(Connection conexion, Integer id_categoria) throws SQLException{
+    public CategoriaProd obtenerPorId(Connection conexion, Integer id_categoria) throws SQLException{
+        CategoriaProd cp = null;
         try{
             PreparedStatement consulta;
             consulta = conexion.prepareStatement("SELECT * FROM "+this.tabla+" WHERE id_categoria=?");
             consulta.setInt(1,id_categoria);
-            consulta.execute();
+            ResultSet result = consulta.executeQuery();
+            while(result.next()){
+                cp = new CategoriaProd(result.getInt("id_categoria"),result.getString("nombre"));
+            }
         }catch(SQLException ex){
             throw new SQLException(ex);
         }
+        return cp;
     }
 }

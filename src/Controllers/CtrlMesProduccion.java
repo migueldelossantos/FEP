@@ -18,21 +18,6 @@ public class CtrlMesProduccion {
    private final String tabla = "mes_producion";
    
    public void guardar(Connection conexion, MesProduccion mp) throws SQLException{
-       try{
-           PreparedStatement consulta;
-           if(mp.getId_mes()==null){
-               consulta = conexion.prepareStatement("INSERT INTO "+this.tabla+" (concepto_id,proyecto_id,monto) VALUES(?,?,?)");
-               consulta.setInt(1,mp.getConcepto_id());
-               consulta.setInt(2,mp.getProyecto_id());
-               consulta.setDouble(3,mp.getMonto());
-           }else{
-               consulta = conexion.prepareStatement("UPDATE "+this.tabla+" SET monto=? WHERE id_mes=?");
-               consulta.setDouble(1,mp.getMonto());
-               consulta.setDouble(2,mp.getMonto());
-           }
-           consulta.executeUpdate();
-       }catch(SQLException ex){
-           throw new SQLException(ex);
-       }
+       
    }
 }
