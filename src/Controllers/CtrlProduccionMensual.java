@@ -37,7 +37,7 @@ public class CtrlProduccionMensual {
                 consulta.setInt(3,pm.getProyecto_id());
             }else{
                 consulta= conexion.prepareStatement("UPDATE " + this.tabla
-                        + " SET categoria_id=?, nombre=?, proyecto_id=? WHERE id_conepto=?");
+                        + " SET categoria_id=?, nombre=?, proyecto_id=? WHERE id_concepto=?");
                 consulta.setInt(1,pm.getCategoria_id());
                 consulta.setString(2,pm.getNombre());
                 consulta.setInt(3,pm.getProyecto_id());
@@ -50,20 +50,23 @@ public class CtrlProduccionMensual {
     }
     
     /**
-     * Metodo para obtener un concepto por su id
+     * Metodo para obtener un concepto de produccion mensual por su id
      * @param conexion
      * @param id_concepto
      * @return
      * @throws SQLException 
      */
-    public ProduccionMensual obtenerPorId(Connection conexion, Integer id_concepto) throws SQLException{
+    public ProduccionMensual obtenerPorId(Connection conexion, Integer id_concepto) 
+            throws SQLException{
         ProduccionMensual pm = null;
         try{
-            PreparedStatement consulta = conexion.prepareStatement("SELECT * FROM " + this.tabla +" WHERE id_concepto=?");
+            PreparedStatement consulta = conexion.prepareStatement("SELECT * FROM " 
+                    + this.tabla +" WHERE id_concepto=?");
             consulta.setInt(1,id_concepto);
             ResultSet resultado = consulta.executeQuery();
             while(resultado.next()){
-                pm = new ProduccionMensual(id_concepto,resultado.getInt("categoria_id") ,resultado.getString("nombre"),resultado.getInt("proyecto_id"));
+                pm = new ProduccionMensual(id_concepto,resultado.getInt("categoria_id"),
+                        resultado.getString("nombre"),resultado.getInt("proyecto_id"));
             }
         }catch(SQLException ex){
             throw new SQLException(ex);
