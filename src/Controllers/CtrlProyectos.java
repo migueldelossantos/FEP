@@ -58,6 +58,17 @@ public class CtrlProyectos {
         return p;
     }
     
+    public void eliminar(Connection conexion, Integer id_proyecto) throws SQLException{
+        try{
+            PreparedStatement consulta;
+            consulta = conexion.prepareStatement("DELETE FROM "+this.tabla+" WHERE id_proyectos=?");
+            consulta.setInt(1,id_proyecto);
+            consulta.execute();
+        }catch(SQLException ex){
+            throw new SQLException(ex);
+        }
+    }
+    
     public List obtenerTodos(Connection conexion) throws SQLException{
         List<Proyectos> proyectos  = new ArrayList<>();
         try{

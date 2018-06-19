@@ -39,11 +39,11 @@ public class CtrlPresupInversionTest {
     public void testGuardar() throws Exception {
         System.out.println("guardar");
         Connection conexion = Conexion.conectar();
-        PresupInversion p = new PresupInversion(null, 1, "nombre concepto", "Pza", 100.0, 10.0, 1000.0, 500.0, 500.0, 1);
+        PresupInversion p = new PresupInversion(null, 1, "nuevo", "Pza", 100.0, 10.0, 1000.0, 500.0, 500.0, 1);
         CtrlPresupInversion instance = new CtrlPresupInversion();
         instance.guardar(conexion, p);
         // TODO review the generated test code and remove the default call to fail.
-        assertTrue(p.getNombre().equals(instance.obtenerPorId(conexion,1).getNombre()));
+        assertTrue(p.getNombre().equals(instance.obtenerPorId(conexion,5).getNombre()));
     }*/
 
     /**
@@ -65,18 +65,18 @@ public class CtrlPresupInversionTest {
      * Test of eliminar method, of class CtrlPresupInversion.
      * @throws java.lang.Exception
      */
-//    @Test
-//    public void testEliminar() throws Exception {
-//        System.out.println("eliminar");
-//        Connection conexion = Conexion.conectar();
-//        Integer id_concepto = 1;
-//        CtrlPresupInversion instance = new CtrlPresupInversion();
-//        instance.eliminar(conexion, id_concepto);
-//        PresupInversion result = instance.obtenerPorId(conexion, id_concepto);
-//        System.out.println(result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        assertTrue(true);
-//    }
+    @Test
+    public void testEliminar() throws Exception {
+        System.out.println("eliminar");
+        Connection conexion = Conexion.conectar();
+        Integer id_concepto = 5;
+        CtrlPresupInversion instance = new CtrlPresupInversion();
+        instance.eliminar(conexion, id_concepto);
+        PresupInversion result = instance.obtenerPorId(conexion, id_concepto);
+        System.out.println(result);
+        // TODO review the generated test code and remove the default call to fail.
+        assertTrue(true);
+    }
 
     /**
      * Test of obtenerTodos method, of class CtrlPresupInversion.

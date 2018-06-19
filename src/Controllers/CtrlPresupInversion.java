@@ -76,9 +76,9 @@ public class CtrlPresupInversion {
     
     public void eliminar(Connection conexion, Integer id_concepto) throws SQLException{
         try{
-            PreparedStatement consulta = conexion.prepareCall("DELETE FROM "+this.tabla+"WHERE id_concepto=?");
+            PreparedStatement consulta = conexion.prepareCall("DELETE FROM "+this.tabla+" WHERE id_concepto=?");
             consulta.setInt(1,id_concepto);
-            consulta.executeQuery();
+            consulta.execute();
         }catch(SQLException ex){
             throw new SQLException(ex);
         }

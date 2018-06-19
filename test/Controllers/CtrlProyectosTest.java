@@ -33,26 +33,37 @@ public class CtrlProyectosTest {
     /**
      * Test of guardar method, of class CtrlProyectos.
      */
-    @Test
+    /*@Test
     public void testGuardar() throws Exception {
         System.out.println("guardar");
         Connection conexion = Conexion.conectar();
         Proyectos proyecto = new Proyectos(null,"Chile habanero","completo",1);
+        Proyectos proyecto2 = new Proyectos(7,"Nuevo Proyecto","completo",1);
         CtrlProyectos instance = new CtrlProyectos();
-        instance.guardar(conexion, proyecto);
+        instance.guardar(conexion, proyecto2);
         assertTrue(instance.obtenerPorId(conexion,1)!=null);
-    }
+    }*/
 
     /**
      * Test of obtenerTodos method, of class CtrlProyectos.
      */
-    @Test
+    /*@Test
     public void testObtenerTodos() throws Exception {
         System.out.println("obtenerTodos");
         Connection conexion = Conexion.conectar();
         CtrlProyectos instance = new CtrlProyectos();
         List result = instance.obtenerTodos(conexion);
+        System.out.println(result.toString());
         assertTrue(result.size()>1);
-    }
+    }*/
     
+    @Test
+    public void testEliminar() throws Exception{
+        System.out.println("eliminar");
+        Connection conexion = Conexion.conectar();
+        Integer id_proyecto = 7;
+        CtrlProyectos instance = new CtrlProyectos();
+        instance.eliminar(conexion, id_proyecto);
+        assertTrue(true);
+    }
 }

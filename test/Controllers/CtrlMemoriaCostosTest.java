@@ -39,7 +39,7 @@ public class CtrlMemoriaCostosTest {
     public void testGuardar() throws Exception {
         System.out.println("guardar");
         Connection conexion = Conexion.conectar();
-        MemoriaCostos mc = new MemoriaCostos(null, 1, "memoria1", "Pza", 10.0, 100.0, 1000.0, 1);
+        MemoriaCostos mc = new MemoriaCostos(1, 1, "hoy", "Caja", 10.0, 100.0, 1000.0, 1);
         CtrlMemoriaCostos instance = new CtrlMemoriaCostos();
         instance.guardar(conexion, mc);
         // TODO review the generated test code and remove the default call to fail.
@@ -64,32 +64,32 @@ public class CtrlMemoriaCostosTest {
     /**
      * Test of eliminar method, of class CtrlMemoriaCostos.
      */
-    /*@Test
+    @Test
     public void testEliminar() throws Exception {
         System.out.println("eliminar");
-        Connection conexion = null;
-        Integer id_concepto = null;
+        Connection conexion = Conexion.conectar();
+        Integer id_concepto = 1;
         CtrlMemoriaCostos instance = new CtrlMemoriaCostos();
         instance.eliminar(conexion, id_concepto);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }*/
+        assertTrue(true);
+    }
 
     /**
      * Test of obtenerTodos method, of class CtrlMemoriaCostos.
      * @throws java.lang.Exception
      */
-    /*@Test
+    @Test
     public void testObtenerTodos() throws Exception {
         System.out.println("obtenerTodos");
         Connection conexion = Conexion.conectar();
         CtrlMemoriaCostos instance = new CtrlMemoriaCostos();
         List<MemoriaCostos> expResult;
         expResult = new ArrayList<>();
-        expResult.add(new MemoriaCostos(1, 1, "memoria1", "Pza", 10.0, 100.0, 1000.0, 1));
+        expResult.add(new MemoriaCostos(1, 1, "hoy", "Caja", 10.0, 100.0, 1000.0, 1));
         List<MemoriaCostos> result = instance.obtenerTodos(conexion);
+        System.out.println(result.toString());
         assertEquals(expResult.size(), result.size());
         // TODO review the generated test code and remove the default call to fail.
-    */
+    }
     
 }
