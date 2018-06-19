@@ -24,6 +24,7 @@ public class CtrlMesProduccion {
      * @param mp
      * @throws SQLException 
      */
+    /*
     public void guardar(Connection conexion, MesProduccion mp) throws SQLException{
         try{
             PreparedStatement consulta;
@@ -46,7 +47,7 @@ public class CtrlMesProduccion {
             throw new SQLException(ex);
         }
     }
-    
+    */
     /**
      * Metodo para obtener un mes de produccion por su id
      * @param conexion
